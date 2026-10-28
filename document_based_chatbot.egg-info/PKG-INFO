@@ -1,0 +1,73 @@
+Metadata-Version: 2.4
+Name: document-based-chatbot
+Version: 0.1.0
+Summary: A document-grounded chatbot using FastAPI, LangChain, and ChromaDB
+License-Expression: MIT
+Requires-Python: <3.13,>=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi
+Requires-Dist: uvicorn[standard]
+Requires-Dist: pydantic<3,>=2
+Requires-Dist: pydantic-settings
+Requires-Dist: sqlalchemy[asyncio]<3,>=2
+Requires-Dist: asyncpg
+Requires-Dist: alembic
+Requires-Dist: python-multipart
+Requires-Dist: pypdf
+Requires-Dist: langchain<2,>=1
+Requires-Dist: langchain-core<2,>=1
+Requires-Dist: langchain-text-splitters
+Requires-Dist: langchain-chroma
+Requires-Dist: langchain-groq
+Requires-Dist: chromadb
+Requires-Dist: sentence-transformers
+Requires-Dist: pwdlib[argon2]
+Requires-Dist: PyJWT
+Requires-Dist: langchain-community
+Requires-Dist: langchain-huggingface
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-asyncio; extra == "dev"
+Requires-Dist: httpx; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+
+
+# Document-Based Chatbot
+
+A document-grounded conversational AI application built with FastAPI,
+LangChain, PostgreSQL, and ChromaDB.
+
+## Overview
+
+The application allows authenticated users to upload PDF, TXT, and
+Markdown documents and ask questions answered using Retrieval-Augmented
+Generation (RAG).
+
+## Planned Features
+
+- Document upload, validation, and ingestion
+- Local embeddings and persistent ChromaDB storage
+- Context-aware answers with source citations
+- Conversation history stored in PostgreSQL
+- Structured responses validated with Pydantic
+- LangChain tool calling for document search, listing, and calculations
+- Asynchronous FastAPI endpoints
+- Automated tests and evaluation
+
+## Technology Stack
+
+- Python 3.12
+- FastAPI and Uvicorn
+- LangChain
+- PostgreSQL and SQLAlchemy 2.x
+- ChromaDB
+- Pydantic v2
+- pytest and HTTPX
+
+## Project Status
+
+Under development.
+
+## License
+
+MIT

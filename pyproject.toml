@@ -1,0 +1,60 @@
+
+[build-system]
+requires = ["setuptools>=75.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "document-based-chatbot"
+version = "0.1.0"
+description = "A document-grounded chatbot using FastAPI, LangChain, and ChromaDB"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = "MIT"
+
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic>=2,<3",
+    "pydantic-settings",
+    "sqlalchemy[asyncio]>=2,<3",
+    "asyncpg",
+    "alembic",
+    "python-multipart",
+    "pypdf",
+    "langchain>=1,<2",
+    "langchain-core>=1,<2",
+    "langchain-text-splitters",
+    "langchain-chroma",
+    "langchain-groq",
+    "chromadb",
+    "sentence-transformers",
+    "pwdlib[argon2]",
+    "PyJWT",
+    "langchain-community",
+    "langchain-huggingface",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "httpx",
+    "ruff",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.format]
+quote-style = "double"

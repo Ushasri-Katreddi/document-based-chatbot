@@ -1,0 +1,6 @@
+
+FastAPI is a Python framework for building APIs.
+PostgreSQL is a relational database used to store structured data.
+Retrieval-Augmented Generation (RAG) retrieves relevant document chunks
+and provides them to a language model to generate grounded answers.
+ChromaDB stores vector embeddings and supports semantic similarity search.
