@@ -16,4 +16,5 @@ def get_llm() -> ChatGroq:
         api_key=settings.groq_api_key,
         temperature=0,
         max_retries=2,
+        streaming=True,
     )

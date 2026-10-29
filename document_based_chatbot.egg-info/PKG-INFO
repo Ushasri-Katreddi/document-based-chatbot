@@ -25,6 +25,7 @@ Requires-Dist: pwdlib[argon2]
 Requires-Dist: PyJWT
 Requires-Dist: langchain-community
 Requires-Dist: langchain-huggingface
+Requires-Dist: rank-bm25
 Provides-Extra: dev
 Requires-Dist: pytest; extra == "dev"
 Requires-Dist: pytest-asyncio; extra == "dev"

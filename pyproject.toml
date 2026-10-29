@@ -32,6 +32,7 @@ dependencies = [
     "PyJWT",
     "langchain-community",
     "langchain-huggingface",
+    "rank-bm25",
 ]
 
 [project.optional-dependencies]
