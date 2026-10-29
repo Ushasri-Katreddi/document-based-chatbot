@@ -1,8 +1,9 @@
 
+from langchain_core.prompts import ChatPromptTemplate
+
 from app.schemas.chat import ChatResponse, Citation
 from app.services.llm_service import get_llm
 from app.services.retrieval_service import retrieve_documents
-from langchain_core.prompts import ChatPromptTemplate
 
 
 QA_PROMPT = ChatPromptTemplate.from_messages(
@@ -29,6 +30,7 @@ def answer_question(
     document_id: int | None = None,
 ) -> ChatResponse:
     """Answer a question using retrieved document context."""
+
     if not question.strip():
         raise ValueError("Question cannot be empty.")
 
@@ -36,6 +38,10 @@ def answer_question(
         question=question,
         document_id=document_id,
     )
+
+    # Temporary debugging: inspect retrieved chunk metadata.
+    for doc in documents:
+        print("Retrieved chunk metadata:", doc.metadata)
 
     if not documents:
         return ChatResponse(
@@ -48,7 +54,8 @@ def answer_question(
 
     context = "\n\n".join(
         f"[Source: {doc.metadata.get('source', 'Unknown')}; "
-        f"Chunk {index}]\n{doc.page_content}"
+        f"Chunk {doc.metadata.get('chunk_index', index)}]\n"
+        f"{doc.page_content}"
         for index, doc in enumerate(documents, start=1)
     )
 
@@ -60,7 +67,10 @@ def answer_question(
         Citation(
             source=doc.metadata.get("source", "Unknown"),
             document_id=doc.metadata["document_id"],
-            chunk_index=index,
+            chunk_index=doc.metadata.get(
+                "chunk_index",
+                index,
+            ),
         )
         for index, doc in enumerate(documents, start=1)
         if doc.metadata.get("document_id") is not None
